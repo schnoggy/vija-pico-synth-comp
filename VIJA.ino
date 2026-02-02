@@ -69,7 +69,7 @@
 #define BUTTON_DEBOUNCE_MS 200
 #define LONG_PRESS_MS 1000
 
-#define USE_UART_MIDI 1  // 0 = USB MIDI, 1 = UART MIDI
+#define USE_UART_MIDI 0  // 0 = USB MIDI, 1 = UART MIDI
 #define MIDI_UART_RX 13
 
 #define USE_SCREEN 1
@@ -650,9 +650,7 @@ void __not_in_flash_func(handleMIDI)() {
       case 11: env_attack_s = 0.01f + (d2 / 127.f) * 2.f; break;
       case 12: env_release_s = 0.01f + (d2 / 127.f) * 3.f; break;
       case 71: filter_resonance_cc = d2; break;
-      case 74:
-        filter_cutoff_cc = d2;
-        break;
+      case 74: filter_cutoff_cc = d2;break;
       case 15: fm_mod = d2 / 127.f; break;
       case 16: timb_mod_midi = d2 / 127.f; break;
       case 17: color_mod_midi = d2 / 127.f; break;
@@ -883,9 +881,10 @@ void setup1() {
 void loop1() {
   handleMIDI();
   saveButton();
+#if USE_SCREEN
   checkSavedFeedback();
+#endif
 
-#if USE_POTS
   static float smoothT = 0.5f;
   static float smoothM = 0.5f;
   static float smoothTMod = 0.0f;
@@ -970,18 +969,6 @@ void loop1() {
         color_in = smoothM;
       }
 
-      if (filter_enabled) {
-        smoothCut += (srcT - smoothCut) * 0.1f;
-        smoothRes += (srcM - smoothRes) * 0.1f;
-
-        filter_cutoff_cc = (uint8_t)(smoothCut * 127.0f);
-        filter_resonance_cc = (uint8_t)(smoothRes * 127.0f);
-      }
-
-      // --- decay CV influence smoothly ---
-      // timb_mod_cv  *= 0.9f;
-      // color_mod_cv *= 0.9f;
-
       engine_updated = true;
     }
 
@@ -1036,8 +1023,6 @@ void loop1() {
       engine_updated = true;
     }
   }
-
-#endif
 
   static int lClk = digitalRead(ENCODER_CLK);
   int clk = digitalRead(ENCODER_CLK);

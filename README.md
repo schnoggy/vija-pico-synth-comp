@@ -1,4 +1,4 @@
-# VIJA (v1.0)
+# VIJA synthesizer
 
 Raspberry PICO digital synthesizer based on **Mutable Instruments Braids** macro oscillator 
 in semi-modular format.  
@@ -33,10 +33,10 @@ The synthesizer operates in three primary display modes:
     * **EXIT MENU**  
 4.  **OSCILOSCOPE:** Automatically engages after 10 seconds to visualize the current waveform
 
-### Filter Mode 
+### Filter Mode (Default)
 
 - Timbre & Color (default)  
-- CV1 & CV2 → Filter cutoff & resonance  
+- CV1 & CV2 → Filter cutoff & resonance
 
 ### CV Modulation Mode
 
@@ -49,7 +49,7 @@ The synthesizer operates in three primary display modes:
 
   Align coresponding MIDI CC value with Timbre or Color pot value to release or vice versa (screen indicator)
     
-- CV1 & CV2 → Filter cutoff & resonance
+- CV1 & CV2 → Free for future functions
   
 ### All Modes OFF
 
@@ -146,5 +146,5 @@ Connect your MIDI Jack via a 6N138 optocoupler circuit to **GP13 (Pin 17)**.
   
 ---
 ##  Version history
-
-* 2026-02-02 - First release 
+* 2026-02-03 - v1.0.1
+* 2026-02-02 - First release v1.0
