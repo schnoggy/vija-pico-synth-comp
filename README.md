@@ -33,10 +33,10 @@ The synthesizer operates in three primary display modes:
     * **EXIT MENU**  
 4.  **OSCILOSCOPE:** Automatically engages after 10 seconds to visualize the current waveform
 
-### Filter Mode 
+### Filter Mode (Default)
 
 - Timbre & Color (default)  
-- CV1 & CV2 → Filter cutoff & resonance  
+- CV1 & CV2 → Filter cutoff & resonance
 
 ### CV Modulation Mode
 
@@ -49,7 +49,7 @@ The synthesizer operates in three primary display modes:
 
   Align coresponding MIDI CC value with Timbre or Color pot value to release or vice versa (screen indicator)
     
-- CV1 & CV2 → Filter cutoff & resonance
+- CV1 & CV2 → Free for future functions
   
 ### All Modes OFF
 
