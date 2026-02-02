@@ -136,7 +136,7 @@ Connect your MIDI Jack via a 6N138 optocoupler circuit to **GP13 (Pin 17)**.
 
 ---
 
-## License
+## 📜 License
 * (c) 2025 Vadims Maksimovs - GPLv3
  
 * **Core Libraries:** stmlib/braids - MIT License (Copyright 2020 Emilie Gillet)
