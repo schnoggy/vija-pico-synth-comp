@@ -147,5 +147,5 @@ Connect your MIDI Jack via a 6N138 optocoupler circuit to **GP13 (Pin 17)**.
 ---
 ##  Version history
 * 2026-02-03 - v1.0.1  
-  In version 1.0 filter midi cc were not working properly because of the cv pots which were controlling the filter at the same time (menu logic). In this version when using midi mode cv modulation pots are disabled (can be   used for other functions). Only midi cc are used for resonance and cutoff. Timbre and Color pots work in soft takeover mode as previously. 
+  In version 1.0 filter midi cc were interfering with cv pots which were controlling the filter at the same time (menu logic). In this version when using midi mode cv modulation pots are disabled. Only midi cc are used for   resonance and cutoff. 
 * 2026-02-02 - First release v1.0
