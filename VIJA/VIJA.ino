@@ -41,8 +41,8 @@
 */
 
 // choose only one ofthe following
-#define SH110X // sh110x display
-// #define SSD1306 //ssd1306 display
+#define SH110X 1// sh110x display
+// #define SSD1306 1//ssd1306 display
 #include <Arduino.h>
 #include <I2S.h>
 #include <Adafruit_TinyUSB.h>
@@ -50,15 +50,21 @@
 #include <BRAIDS.h>
 #include <pico/stdlib.h>
 #include <Wire.h>
+
 #if SH110X
-#include <Adafruit_SH110X.h>
-// can you use a variable for SH110x and ssd1306 screen?
-#define SCREEN_WHITE SH110X_WHITE
+  
+  #include <Adafruit_SH110X.h>
+  #define SCREEN_WHITE SH110X_WHITE
+  
 #endif
+
 #if SSD1306
-#include <Adafruit_SSD1306.h>
-#define SCREEN_WHITE SSD1306_WHITE
+  
+    #include <Adafruit_SSD1306.h>
+    #define SCREEN_WHITE SSD1306_WHITE
+  
 #endif
+
 #include <LittleFS.h>
 #include <ArduinoJson.h>
 
@@ -256,19 +262,19 @@ Adafruit_USBD_MIDI usb_midi;
 SynthSettings lastSavedSettings; // Settings copy for comparison of changes
 
 #if USE_SCREEN
-{
+
 #define i2c_Address 0x3c
 #if SH110X
-  {
+  
     Adafruit_SH1106G display = Adafruit_SH1106G(128, 64, &Wire, -1);
-  }
+  
 #endif
 #if SSD1306
-  {
+  
     Adafruit_SSD1306 display(128, 64, &Wire, -1);
-  }
+  
 #endif
-}
+
 #endif
 
 const char *const engine_names[] = {
@@ -1022,7 +1028,7 @@ void setup1()
   pinMode(ENCODER_SW, INPUT_PULLUP);
 
 #if USE_SCREEN
-#if SH110X
+#ifdef SH110X
   {
     display.begin(0x3C, true);
   }
